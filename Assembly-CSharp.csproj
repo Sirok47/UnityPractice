@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Sharik.cs" />
+    <Compile Include="Assets\Scripts\Podoshva.cs" />
     <Compile Include="Assets\Scripts\CameraSleduet.cs" />
   </ItemGroup>
   <ItemGroup>

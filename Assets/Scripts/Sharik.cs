@@ -23,9 +23,10 @@ public class Sharik : MonoBehaviour
     {     
         horizontalInput = Input.GetAxis("Horizontal");
         //transform.Translate(Vector3.right * Time.deltaTime *speed*horizontalInput);
-        if (Math.Abs(shar.velocity.x)<10) shar.AddForce(Vector2.right * Time.deltaTime *speed*horizontalInput*100);
+        shar.AddForce(Vector2.right * Time.deltaTime *speed*horizontalInput*100);
 
 
+         shar.AddForce(new Vector2((float)Math.Pow((shar.velocity.x),2)*(shar.velocity.x<0?1:-1),0)*Time.deltaTime*10);
 
         if (Input.GetKeyDown(KeyCode.Space) && yaNaZemle )
         {
@@ -36,14 +37,9 @@ public class Sharik : MonoBehaviour
 
     }
 
-
-    void OnCollisionEnter2D(Collision2D predmet)
+    public void NaZemle()
     {
-
-          if (predmet.gameObject.tag == "Zemlya") yaNaZemle=true;
-
-
-
+        yaNaZemle=true;
     }
 
 }
