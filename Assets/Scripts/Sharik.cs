@@ -4,12 +4,13 @@ using UnityEngine;
 using System;
 
 public class Sharik : MonoBehaviour
-{     float horizontalInput;
+{     
       public float speed;
       public float jumpHeight;
-      int kadri;
       protected Rigidbody2D shar;
       private bool yaNaZemle;
+      private bool yaNaStene;
+      private int wallJumped=0;
       
       // Start is called before the first frame update
     void Start()
@@ -21,25 +22,33 @@ public class Sharik : MonoBehaviour
     // Update is called once per frame
     void Update()
     {     
-        horizontalInput = Input.GetAxis("Horizontal");
-        //transform.Translate(Vector3.right * Time.deltaTime *speed*horizontalInput);
-        shar.AddForce(Vector2.right * Time.deltaTime *speed*horizontalInput*100);
+        shar.AddForce(Vector2.right * Time.deltaTime *speed*Input.GetAxis("Horizontal")*100);
+        shar.AddForce(new Vector2((float)Math.Pow((shar.velocity.x),2)*(shar.velocity.x<0?1:-1),0)*Time.deltaTime*10);
 
-
-         shar.AddForce(new Vector2((float)Math.Pow((shar.velocity.x),2)*(shar.velocity.x<0?1:-1),0)*Time.deltaTime*10);
-
-        if (Input.GetKeyDown(KeyCode.Space) && yaNaZemle )
-        {
-            shar.AddForce(new Vector2(0,jumpHeight), ForceMode2D.Impulse);
-            yaNaZemle=false;
-            
-        }
+        if (Input.GetKeyDown(KeyCode.Space)) JumpAttempt();
 
     }
 
-    public void NaZemle()
+    public void NaZemle(bool pravda)
     {
-        yaNaZemle=true;
+        yaNaZemle=pravda;
+        if (pravda) wallJumped=0;
+    }
+
+    public void NaStene(bool pravda)
+    {
+        yaNaStene=pravda;
+    }
+
+    void JumpAttempt()
+    {
+        if (yaNaZemle){
+            shar.AddForce(new Vector2(0,jumpHeight), ForceMode2D.Impulse);
+            yaNaZemle=false;
+        } else if (wallJumped<2 && yaNaStene){
+            shar.AddForce(new Vector2(0,jumpHeight), ForceMode2D.Impulse);
+            wallJumped++;
+        }
     }
 
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Podoshva : MonoBehaviour
+public class Ryki : MonoBehaviour
 { public Sharik sharik;
 
     // Start is called before the first frame update
@@ -21,12 +21,11 @@ public class Podoshva : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D predmet)
     {
-          if (predmet.gameObject.tag == "Zemlya") sharik.NaZemle(true);
+          if (predmet.gameObject.tag == "Zemlya") sharik.NaStene(true);
     }
 
     void OnCollisionExit2D(Collision2D predmet)
     {
-          if (predmet.gameObject.tag == "Zemlya") sharik.NaZemle(false);
+          if (predmet.gameObject.tag == "Zemlya") sharik.NaStene(false);
     }
 }
-
