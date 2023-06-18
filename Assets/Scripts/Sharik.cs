@@ -1,34 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Sharik : MonoBehaviour
-{     float horizontalInput;
+{     
       public float speed;
       public float jumpHeight;
-      int kadri;
+      protected Rigidbody2D shar;
+      private bool yaNaZemle;
+      private bool yaNaStene;
+      private int wallJumped=0;
+      public GameObject granata;
+
       
       // Start is called before the first frame update
     void Start()
     {
-        
+        shar = GetComponent<Rigidbody2D>();
+        yaNaZemle=false;
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
+    {     
+        shar.AddForce(Vector2.right * Time.deltaTime *speed*Input.GetAxis("Horizontal")*100);
+        shar.AddForce(new Vector2((float)Math.Pow((shar.velocity.x),2)*(shar.velocity.x<0?1:-1),0)*Time.deltaTime*10);
+
+        if (Input.GetKeyDown(KeyCode.Space)) JumpAttempt();
+
+
+        if (Input.GetKeyDown(KeyCode.G)) BrosokGranati();
+    }
+
+    public void NaZemle(bool pravda)
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector3.right * Time.deltaTime *speed*horizontalInput);
-        
-       // if (Input.GetAxis("Jump")!=0) kadri=(int)(1/Time.deltaTime);
-      //  if (kadri!=0) {transform.Translate(Vector3.up * Time.deltaTime *jumpHeight); kadri--;}
+        yaNaZemle=pravda;
+        if (pravda) wallJumped=0;
+    }
+
+    public void NaStene(bool pravda)
+    {
+        yaNaStene=pravda;
+    }
+
+    void JumpAttempt()
+    {
+        if (yaNaZemle){
+            shar.AddForce(new Vector2(0,jumpHeight), ForceMode2D.Impulse);
+            yaNaZemle=false;
+        } else if (wallJumped<2 && yaNaStene){
+            shar.AddForce(new Vector2(0,jumpHeight), ForceMode2D.Impulse);
+            wallJumped++;
+        }
+    }
 
 
-         if (Input.GetAxis("Jump")!=0) transform.Translate(Vector3.up * Time.deltaTime *jumpHeight);
-        
+    void BrosokGranati()
+    {
+        Instantiate(granata, transform).GetComponent<Rigidbody2D>().AddForce(new Vector2(100,0), ForceMode2D.Impulse);
 
-
-        
 
     }
+
+
 }
