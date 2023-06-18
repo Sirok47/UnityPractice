@@ -11,6 +11,8 @@ public class Sharik : MonoBehaviour
       private bool yaNaZemle;
       private bool yaNaStene;
       private int wallJumped=0;
+      public GameObject granata;
+
       
       // Start is called before the first frame update
     void Start()
@@ -27,6 +29,8 @@ public class Sharik : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)) JumpAttempt();
 
+
+        if (Input.GetKeyDown(KeyCode.G)) BrosokGranati();
     }
 
     public void NaZemle(bool pravda)
@@ -50,5 +54,14 @@ public class Sharik : MonoBehaviour
             wallJumped++;
         }
     }
+
+
+    void BrosokGranati()
+    {
+        Instantiate(granata, transform).GetComponent<Rigidbody2D>().AddForce(new Vector2(100,0), ForceMode2D.Impulse);
+
+
+    }
+
 
 }

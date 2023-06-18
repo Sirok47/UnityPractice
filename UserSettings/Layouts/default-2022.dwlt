@@ -49,6 +49,7 @@ MonoBehaviour:
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
   controlID: 102
+
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -66,11 +67,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1019.2
     y: 0
+
     width: 516.8
     height: 770.8
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
+
   m_Panes:
   - {fileID: 16}
   - {fileID: 12}
@@ -94,8 +97,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+
     width: 198.4
     height: 455.2
+
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
@@ -270,6 +275,7 @@ MonoBehaviour:
     y: 0
     width: 820.80005
     height: 455.2
+
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 18}
@@ -483,6 +489,7 @@ MonoBehaviour:
     m_SearchArea: 1
     m_Folders:
     - Assets/babah
+
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -491,6 +498,7 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders:
   - Assets/babah
+
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\Shrek Dev\UnityPractice
   m_LockTracker:
@@ -500,6 +508,7 @@ MonoBehaviour:
     m_SelectedIDs: ba6a0000
     m_LastClickedID: 27322
     m_ExpandedIDs: 00000000306100009861000000ca9a3bffffff7f
+
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -528,6 +537,7 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
     m_ExpandedIDs: 0000000030610000
+
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -654,6 +664,7 @@ MonoBehaviour:
     y: 73.6
     width: 197.4
     height: 434.2
+
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -670,6 +681,7 @@ MonoBehaviour:
       m_SelectedIDs: a473ffff
       m_LastClickedID: -35932
       m_ExpandedIDs: 28f5ffff14fbffff
+
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -717,6 +729,7 @@ MonoBehaviour:
     y: 73.6
     width: 818.80005
     height: 434.2
+
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1065,6 +1078,7 @@ MonoBehaviour:
     m_Target: {x: 10.4600935, y: 0.21828036, z: -0.0006749985}
     speed: 2
     m_Value: {x: 10.473777, y: 0.21788009, z: -0.00044999944}
+
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1117,13 +1131,14 @@ MonoBehaviour:
     m_Target: 0.35114908
     speed: 2
     m_Value: 0.33602783
+
   m_Ortho:
     m_Target: 1
     speed: 2
     m_Value: 1
   m_CameraSettings:
-    m_Speed: 1.1804098
-    m_SpeedNormalized: 0.5899999
+    m_Speed: 1.0005002
+    m_SpeedNormalized: 0.5000001
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -1135,6 +1150,7 @@ MonoBehaviour:
     m_DynamicClip: 1
     m_OcclusionCulling: 0
   m_LastSceneViewRotation: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -1165,6 +1181,7 @@ MonoBehaviour:
     y: 73.6
     width: 662.80005
     height: 434.2
+
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1182,6 +1199,7 @@ MonoBehaviour:
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
   m_TargetSize: {x: 662.80005, y: 413.2}
+
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -1200,6 +1218,7 @@ MonoBehaviour:
     m_HBaseRangeMax: 265.12003
     m_VBaseRangeMin: -165.28001
     m_VBaseRangeMax: 165.28001
+
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1221,6 +1240,7 @@ MonoBehaviour:
       height: 413.2
     m_Scale: {x: 2.1955812, y: 2.1955812}
     m_Translation: {x: 331.40012, y: 206.60007}
+
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -1234,6 +1254,7 @@ MonoBehaviour:
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_LastWindowPixelSize: {x: 828.50006, y: 542.75}
+
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
