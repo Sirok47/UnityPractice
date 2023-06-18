@@ -16,7 +16,9 @@ public class Health : MonoBehaviour
 
 
     void perish()
-    { 
+    {    
+         
         Destroy(gameObject);
+       if (gameObject.name.Equals("Sharik")) { Debug.Log("zakrivayus"); Time.timeScale = 0; }
     }
 }

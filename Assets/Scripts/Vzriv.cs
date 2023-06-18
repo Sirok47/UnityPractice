@@ -46,6 +46,7 @@ public class Vzriv : MonoBehaviour
 
         Destroy(transform.parent.gameObject);
         Destroy(gameObject);
+        
     }
 
 

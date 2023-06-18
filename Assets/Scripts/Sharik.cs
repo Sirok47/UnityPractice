@@ -10,13 +10,16 @@ public class Sharik : MonoBehaviour
       protected Rigidbody2D shar;
       private bool yaNaZemle;
       private bool yaNaStene;
+      public float timer=1; 
+      public bool play=true; 
       private int wallJumped=0;
       public GameObject granata;
-
+      
       
       // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = timer;
         shar = GetComponent<Rigidbody2D>();
         yaNaZemle=false;
     }
@@ -31,6 +34,12 @@ public class Sharik : MonoBehaviour
 
 
         if (Input.GetKeyDown(KeyCode.G)) BrosokGranati();
+
+
+        
+        if (Input.GetKeyDown(KeyCode.Escape) && play) {timer=0; play=false;}
+        else if (Input.GetKeyDown(KeyCode.Escape) && !play) {timer=1; play=true;}
+        Time.timeScale = timer;
     }
 
     public void NaZemle(bool pravda)
