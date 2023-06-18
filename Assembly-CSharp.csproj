@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\Podoshva.cs" />
     <Compile Include="Assets\Scripts\PodrivHohlov.cs" />
     <Compile Include="Assets\Scripts\CameraSleduet.cs" />
+    <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\Ryki.cs" />
   </ItemGroup>
   <ItemGroup>
