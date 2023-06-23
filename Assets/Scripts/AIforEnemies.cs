@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AIforEnemies : MonoBehaviour
 {
     public bool isLeftSafe;
     public bool isRightSafe;
     public Vector2 target;
-    private RigigBody2D rigidB;
-    Random rnd = new Random();
+    public float monsterSpeed=10;
+    private Rigidbody2D rigidB;
+    private System.Random rnd = new System.Random();
     // Start is called before the first frame update
     void Start()
     {
@@ -19,30 +21,32 @@ public class AIforEnemies : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target){
-            if (target.x>transform.x && isRightSafe){
-                rigidB.velocity.x=4;
+        if (target != Vector2.positiveInfinity) {
+            if (target.x>transform.position.x && isRightSafe){
+                rigidB.MovePosition(new Vector2(transform.position.x + monsterSpeed * Time.deltaTime, transform.position.y));
             }
-            if (target.x<transform.x && isLeftSafe){
-                rigidB.velocity.x=-4;
+            if (target.x < transform.position.x && isLeftSafe)
+            {
+                rigidB.MovePosition(new Vector2(transform.position.x - monsterSpeed * Time.deltaTime, transform.position.y));
             }
-        } else {rigidB.velocity.x=0;}
+            else target =  Vector2.positiveInfinity; 
+        } 
     }
 
     private void MakeDecision()
     {
         switch (rnd.Next(1, 3))
-        {
+        { 
             //Stand still
-            1:
-            //Move a bit
-            2:
-            target=new Vector2(transform.x+rnd.Next(-10.10))
+           case 1: target = Vector2.positiveInfinity;  break;
+             //Move a bit
+            case 2:
+                target = new Vector2(transform.position.x + rnd.Next(-50,50), transform.position.y);
             break;
             //Randomly attack
-            3:
+            case  3:break;
 
-            default:
+
         }
         Invoke("MakeDecision",rnd.Next(3, 5));
     }
