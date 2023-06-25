@@ -5,8 +5,9 @@ using System;
 
 public class AIforEnemies : MonoBehaviour
 {
-    public bool isLeftSafe;
-    public bool isRightSafe;
+    bool isLeftSafe;
+    bool isRightSafe;
+    public bool playerInRange;
     public Vector2 target;
     public float monsterSpeed=10;
     private Rigidbody2D rigidB;
@@ -35,18 +36,19 @@ public class AIforEnemies : MonoBehaviour
 
     private void MakeDecision()
     {
-        switch (rnd.Next(1, 3))
+        if (!playerInRange) switch (rnd.Next(1, 3))
         { 
             //Stand still
-           case 1: target = Vector2.positiveInfinity;  break;
-             //Move a bit
+            case 1: 
+                target = Vector2.positiveInfinity;  break;
+            //Move a bit
             case 2:
                 target = new Vector2(transform.position.x + rnd.Next(-50,50), transform.position.y);
             break;
             //Randomly attack
-            case  3:break;
-
-
+            case  3:
+            
+            break;
         }
         Invoke("MakeDecision",rnd.Next(3, 5));
     }
