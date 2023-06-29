@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 public class Sharik : MonoBehaviour
 {     
       public float speed;
@@ -14,9 +15,8 @@ public class Sharik : MonoBehaviour
       private bool play=true; 
       private int wallJumped=0;
       public GameObject granata;
-      private DateTime metka;
-      public double cooldown=1;
-      private DateTime cd;
+      public float cooldown=1;
+      private Cooldown grenadeCD;
       
       
       // Start is called before the first frame update
@@ -28,8 +28,8 @@ public class Sharik : MonoBehaviour
         shar = GetComponent<Rigidbody2D>();
         yaNaZemle=false;
 
-
-        cd=new DateTime().AddSeconds(cooldown);
+        grenadeCD=new Cooldown(cooldown);
+        
         
     }
 
@@ -43,7 +43,7 @@ public class Sharik : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) JumpAttempt();
 
         
-        if ((Input.GetKeyDown(KeyCode.G)) && (DateTime.Now.Subtract(metka)>cd.Subtract(new DateTime()))) BrosokGranati();
+        if ((Input.GetKeyDown(KeyCode.G)) && grenadeCD.IsPassed()) BrosokGranati();
 
 
         
@@ -84,13 +84,12 @@ public class Sharik : MonoBehaviour
     { 
         float direction = (float)Math.Sqrt(Math.Pow(shar.velocity.x,2)+Math.Pow(shar.velocity.y,2))/10;
         Instantiate(granata, transform).GetComponent<Rigidbody2D>().AddForce(new Vector2(shar.velocity.x/direction,shar.velocity.y/direction), ForceMode2D.Impulse);
-        metka = DateTime.Now;
-
+        grenadeCD.LeaveTimeStamp();
     }
 
      void OnGUI()
     {
-        TimeSpan counter=cd.Subtract(new DateTime()).Subtract(DateTime.Now.Subtract(metka));
+        TimeSpan counter=grenadeCD.GetCurrentCD();
        
         int w = Screen.width, h = Screen.height;
  
@@ -101,7 +100,7 @@ public class Sharik : MonoBehaviour
         style.fontSize = h * 5 / 100; 
         style.normal.textColor = Color.black;
         string text=counter.Seconds.ToString()+"."+((int)((double)(counter.Milliseconds)/100)).ToString();
-        if (DateTime.Now.Subtract(metka)<cd.Subtract(new DateTime())) GUI.Label(rect, text, style);
+        if (!grenadeCD.IsPassed()) GUI.Label(rect, text, style);
        
        
     }

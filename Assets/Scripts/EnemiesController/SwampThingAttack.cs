@@ -4,19 +4,36 @@ using UnityEngine;
 
 public class SwampThingAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public int attackDamage=20;
+    Rigidbody2D enemy;
+    Vector2 attackForceScale;
+    public float attackForce=10;
+    public float cooldown=1;
+    private Cooldown attackCD;
+
+    void Start(){
+        attackCD=new Cooldown(cooldown);
+        enemy=GetComponent<Rigidbody2D>();
+        attackForceScale=new Vector2(attackForce,(float)(attackForce*1.3));
+    }
+    
+    public void PerformAttack(Vector2 target){
+        if (attackCD.IsPassed()) {
+            DashAttack(target);
+            attackCD.LeaveTimeStamp();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void DashAttack(Vector2 target){
+        enemy.AddForce(Vector2.Scale(new Vector2(target.x-transform.position.x,target.y-transform.position.y+20).normalized,attackForceScale),ForceMode2D.Impulse);
     }
 
-    void DealDamage(gameObject victim, int damage){
-        victim.GetComponent<Health>();
+    void DealDamage(GameObject victim, int damage){
+        victim.GetComponent<Health>().takeDamage(damage);
     }
+
+    void OnCollisionEnter2D(Collision2D colider){
+        try{DealDamage(colider.gameObject, attackDamage);}
+        catch{}
+    } 
 }

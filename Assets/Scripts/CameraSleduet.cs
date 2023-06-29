@@ -13,6 +13,7 @@ public class CameraSleduet : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position=player.transform.position+new Vector3(0,5,-2);
+        try{transform.position=player.transform.position+new Vector3(0,5,-2);}
+        catch{}
     }
 }

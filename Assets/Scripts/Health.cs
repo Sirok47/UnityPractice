@@ -10,15 +10,14 @@ public class Health : MonoBehaviour
     public void takeDamage(int Damage)
     {
      hp-=Damage;
-      Debug.Log(hp+"VAS POVREDILI");
+     Debug.Log(Damage+" VAS POVREDILI");
      if (hp<=0) perish();
     }
 
 
     void perish()
-    {    
-         
-        Destroy(gameObject);
-       if (gameObject.name.Equals("Sharik")) { Debug.Log("zakrivayus"); Time.timeScale = 0; }
+    {       
+       Destroy(gameObject);
+       if (gameObject.tag=="Player") { Debug.Log("zakrivayus"); Time.timeScale = 0; }
     }
 }

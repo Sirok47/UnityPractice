@@ -26,6 +26,7 @@ public class MneNyzhnoVizolyator : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-       strelka.transform.eulerAngles= new Vector3(0, 0, 180/yravnoveshennost*Math.Abs(shar.velocity.x) - 125);
+       try{strelka.transform.eulerAngles= new Vector3(0, 0, 180/yravnoveshennost*Math.Abs(shar.velocity.x) - 125);}
+       catch{}
     }
 }
