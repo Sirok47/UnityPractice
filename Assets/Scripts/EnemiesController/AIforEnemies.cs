@@ -28,7 +28,6 @@ public class AIforEnemies : MonoBehaviour
     void Update()
     {
         if (playerInRange && !inAir) attackScript.PerformAttack(target);
-        
     }
 
     void FixedUpdate(){
@@ -41,7 +40,7 @@ public class AIforEnemies : MonoBehaviour
                 rigidB.AddForce(new Vector2((Math.Abs(rigidB.velocity.x)-monsterSpeed)*rigidB.mass,0),ForceMode2D.Impulse);
                 sprite.flipX=false;
             }
-            else target =  Vector2.positiveInfinity; 
+            else target = Vector2.positiveInfinity; 
         } 
         
     }

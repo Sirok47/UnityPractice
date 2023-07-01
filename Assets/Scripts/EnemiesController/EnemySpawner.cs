@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     void SpawnEnemy(){
-        Vector3 spawnLocation = new Vector3(player.Transform.x+rnd.Next(5,10)*(rnd.Next(0,1)==0?1:-1),player.Transform.y+1,0);
+        Vector3 spawnLocation = new Vector3(player.transform.position.x+rnd.Next(5,10)*(rnd.Next(0,1)==0?1:-1),player.transform.position.y+4,0);
         GameObject nuCheTam=Instantiate(detector,spawnLocation,new Quaternion());
         if (nuCheTam.GetComponent<CollisionDetector>().IsClear()){
             Instantiate(enemy,spawnLocation,new Quaternion());

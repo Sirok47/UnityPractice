@@ -14,7 +14,7 @@ public class SwampThingAttack : MonoBehaviour
     void Start(){
         attackCD=new Cooldown(cooldown);
         enemy=GetComponent<Rigidbody2D>();
-        attackForceScale=new Vector2(attackForce,(float)(attackForce*1.3));
+        attackForceScale=new Vector2((float)(attackForce*1.3),attackForce);
     }
     
     public void PerformAttack(Vector2 target){
@@ -25,7 +25,7 @@ public class SwampThingAttack : MonoBehaviour
     }
 
     void DashAttack(Vector2 target){
-        enemy.AddForce(Vector2.Scale(new Vector2(target.x-transform.position.x,target.y-transform.position.y+20).normalized,attackForceScale),ForceMode2D.Impulse);
+        enemy.AddForce(Vector2.Scale(new Vector2(target.x-transform.position.x,target.y-transform.position.y+7).normalized,attackForceScale),ForceMode2D.Impulse);
     }
 
     void DealDamage(GameObject victim, int damage){

@@ -10,11 +10,13 @@ public class AgroRange : MonoBehaviour
         ai = GetComponentInParent<AIforEnemies>();
     }
 
-    void OnTriggerEnter2D(Collider2D colider){ai.playerInRange=true;}
+    void OnTriggerEnter2D(Collider2D colider){
+        if (colider.gameObject.tag=="Player") ai.playerInRange=true;}
 
-    void OnTriggerExit2D(Collider2D colider){ai.playerInRange=false;}
+    void OnTriggerExit2D(Collider2D colider){
+        if (colider.gameObject.tag=="Player") ai.playerInRange=false;}
 
     void OnTriggerStay2D(Collider2D colider){
-        if (colider.gameObject.tag=="Player"){ai.target=colider.transform.position;}
+        if (colider.gameObject.tag=="Player") ai.target=colider.transform.position;
     }
 }
